@@ -1,0 +1,93 @@
+.tabsNavBarWrapper {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  
+  .tabsNavBarWrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2rem;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff);
+    pointer-events: none;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+    opacity: 1;
+  }
+  
+  .tabsNavBarWrapper.fadeEnd::after {
+    opacity: 0;
+  }
+  
+  .tabsNavBar {
+    display: inline-flex;
+    position: relative;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-bottom: 4px;
+    padding-top: 2px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .tabsNavBar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .tab {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    color: #666;
+    cursor: pointer;
+    opacity: 0.6;
+    padding: 0.5rem;
+    flex: 0 0 auto;
+    position: relative;
+    z-index: 2; 
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+  
+  .tab:hover, 
+  .tab:focus,
+  .activeTab {
+    color: #004225;
+    opacity: 1;
+  }
+
+  .tab:focus {
+    /* outline: 2px solid #004225; 
+    outline-offset: 1px; */
+  }
+  
+  
+  .activeIndicator {
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    background-color: #004225;
+    transition: all 0.3s ease;
+    z-index: 2;
+  }
+  
+  .fadeRight {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2rem;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  @media (min-width: 768px) {
+    .tab {
+      font-size: 1.5rem;
+    }
+  }

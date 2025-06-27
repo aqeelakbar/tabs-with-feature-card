@@ -1,0 +1,19 @@
+.heading1 {
+    font-weight: 600;
+    font-size: 3rem;
+    width: 80%;
+  }
+  
+@media (min-width: 768px) {
+    .heading1 {
+        font-size: 4rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .heading1 {
+        font-size: 3rem;
+    }
+}
+
+  
