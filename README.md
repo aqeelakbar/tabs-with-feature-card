@@ -26,14 +26,17 @@ This project reflects my attention to detail and design sensibility. I aimed to 
   ```bash
   git clone [your-repo-url]
   cd [your-project-folder]
+  ```
 
 2. Install dependencies:
   ```bash
   npm install
+  ```
 
 3. Run the development server
   ```bash
   npm run dev
+  ```
 
 ## ✦ Notes
 
