@@ -24,7 +24,7 @@ This project reflects my attention to detail and design sensibility. I aimed to 
 
 1. Clone the repository:
   ```bash
-  git clone [your-repo-url]
+  git clone github.com:aqeelakbar/tabs-with-feature-card.git
   cd [your-project-folder]
   ```
 
