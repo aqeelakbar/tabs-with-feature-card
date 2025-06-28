@@ -38,7 +38,7 @@
 .image {
   flex-shrink: 0;
   object-fit: cover;
-  min-width: 100%;
+  min-width: auto;
   min-height: 100%
 }
 
