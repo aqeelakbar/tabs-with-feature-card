@@ -1,6 +1,6 @@
 # Tabs with Feature Card
 
-This project is a responsive, accessible tabbed interface built using React and Vite. It was created for a design engineering assignment to demonstrate visual polish, interaction quality, and clean implementation.
+An interaction study of a responsive tabbed feature card, built with React, TypeScript and Vite. It explores how motion, layout and navigation details affect a small interface across screen sizes.
 
 ## ✦ About the Component
 
@@ -24,8 +24,8 @@ This project reflects my attention to detail and design sensibility. I aimed to 
 
 1. Clone the repository:
   ```bash
-  git clone github.com:aqeelakbar/tabs-with-feature-card.git [your-project-folder]
-  cd [your-project-folder]
+  git clone https://github.com/aqeelakbar/tabs-with-feature-card.git
+  cd tabs-with-feature-card
   ```
 
 2. Install dependencies:
