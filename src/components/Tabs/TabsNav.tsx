@@ -5,9 +5,10 @@ import { tabOptions, type TabOption } from './../../data';
 type Props = {
   activeTab: TabOption; // set current tab
   setActiveTab: (tab: TabOption) => void; // update activeTab
+  idPrefix: string;
 };
 
-export default function TabsNav({ activeTab, setActiveTab }: Props) {
+export default function TabsNav({ activeTab, setActiveTab, idPrefix }: Props) {
   const [fadeEnd, setFadeEnd] = useState(true); // show and hide the fade on the right
 
   // References to each tab button so we can measure and animate the active underline
@@ -69,36 +70,48 @@ export default function TabsNav({ activeTab, setActiveTab }: Props) {
 
   return (
     <div className={`${styles.tabsNavBarWrapper} ${!fadeEnd ? styles.fadeEnd : ''}`}>
-     <nav
+      <nav
         ref={tabsNavContainer}
         className={styles.tabsNavBar}
         role="tablist"
+        aria-label="Features"
         aria-orientation="horizontal"
       >
         {tabOptions.map((tab, index) => (
           <button
             key={tab}
-            id={`tab-${tab}`}
+            type="button"
+            id={`${idPrefix}-tab-${index}`}
             ref={(el) => {
-              tabNavButton.current[tab] = el;   
+              tabNavButton.current[tab] = el;
             }}
             role="tab"
             aria-selected={activeTab === tab}
-            aria-controls={`panel-${tab}`}
+            aria-controls={`${idPrefix}-panel-${index}`}
             tabIndex={activeTab === tab ? 0 : -1} // Only active tab is focusable
             className={`${styles.tab} ${activeTab === tab ? styles.activeTab : ''}`}
             onClick={() => setActiveTab(tab)}
             onKeyDown={(e) => {
-              if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-                const dir = e.key === 'ArrowRight' ? 1 : -1;
-                const nextIndex = (index + dir + tabOptions.length) % tabOptions.length;
-                const nextTab = tabOptions[nextIndex];
-                tabNavButton.current[nextTab]?.focus(); // Move focus only
+              let nextIndex: number;
+              switch (e.key) {
+                case 'ArrowRight':
+                  nextIndex = (index + 1) % tabOptions.length;
+                  break;
+                case 'ArrowLeft':
+                  nextIndex = (index - 1 + tabOptions.length) % tabOptions.length;
+                  break;
+                case 'Home':
+                  nextIndex = 0;
+                  break;
+                case 'End':
+                  nextIndex = tabOptions.length - 1;
+                  break;
+                default:
+                  return;
               }
 
-              if (e.key === 'Enter' || e.key === ' ') {
-                setActiveTab(tab); // Select tab with Enter/Space
-              }
+              e.preventDefault();
+              tabNavButton.current[tabOptions[nextIndex]]?.focus();
             }}
           >
             {tab}
@@ -106,7 +119,6 @@ export default function TabsNav({ activeTab, setActiveTab }: Props) {
         ))}
         <span className={styles.activeIndicator} style={indicatorStyle} />
       </nav>
-
     </div>
   );
 }
